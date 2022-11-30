@@ -9,17 +9,11 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const TokenDrop = await ethers.getContractFactory("TokenDrop");
-  const tokenDrop = await TokenDrop.deploy();
-
-  await tokenDrop.deployed();
-
   const Airdrop = await ethers.getContractFactory("Airdrop");
-  const airdrop = await Airdrop.deploy(tokenDrop.address, 100);
+  const airdrop = await Airdrop.deploy();
 
   await airdrop.deployed();
 
-  console.log("Token Drop:", tokenDrop.address);
   console.log("Airdrop:", airdrop.address);
 }
 
@@ -29,6 +23,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
-// Token Drop: 0xaC560B3BC37EC0B1D460292cf0aaD0dE54B39F84
-// Airdrop: 0x6A806b89C1064D30Be241C48d8Ea27690dB89A66
