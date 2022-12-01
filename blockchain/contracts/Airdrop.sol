@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-// 0x5aBFBe12a9C87790F8A80469515A5A5350488aB3
-
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -14,7 +12,7 @@ contract Airdrop is Ownable, Pausable {
 	address private _walletWithTokens;
 
 	event AirdropReceived(address indexed droper, uint value);
-	event SetNewToken(address token, address _newToken, address _newWallet);
+	event SetNewToken(address token, address _newToken, address _newWallet, uint _amountDrop);
     event Withdraw(address to, uint amount);
 
 	constructor() {
@@ -43,16 +41,17 @@ contract Airdrop is Ownable, Pausable {
 	}
 
     // Changing the token
-    function setTokenAndWalletAddr(address _newToken, address _wallet) external onlyOwner {
+    function setTokenWalletAddrAmount(address _newToken, address _wallet, uint _value) external onlyOwner {
         require(_newToken != address(0), "Address not be zero!");
 		require(_wallet != address(0), "Address not be zero!");
         _TOKEN = IERC20(_newToken);
 		_walletWithTokens = _wallet;
-		emit SetNewToken(address(_TOKEN), _newToken, _wallet);
+		setAmountAirdrop(_value);
+		emit SetNewToken(address(_TOKEN), _newToken, _wallet, _value);
     }
 
 	// Changing the amount of airdrop
-	function setAmountAirdrop(uint _amount) external onlyOwner {
+	function setAmountAirdrop(uint _amount) public onlyOwner {
         require(_amount != amountAirdrop && _amount != 0, "Change value");
 		amountAirdrop = _amount;
 	}

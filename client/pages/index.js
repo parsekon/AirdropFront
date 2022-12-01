@@ -1,9 +1,16 @@
-import styles from '../styles/Home.module.css'
+import Layout from "../src/components/Layout";
+import Head from "next/head";
 
-export default function Home() {
+function Index() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <Layout>
+      <Head>
+        <title>AirDrop</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+    </Layout>
+  );
 }
+
+export default Index;

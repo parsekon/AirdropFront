@@ -1,6 +1,6 @@
 "use strict";
 
-var addressAirdrop = 0x5aBFBe12a9C87790F8A80469515A5A5350488aB3;
+var addressAirdrop = 0x5AE704B349720604CAd75a06984b34F845C8fe5c;
 var abiAirdrop = [{
   "inputs": [],
   "stateMutability": "nonpayable",
@@ -62,6 +62,11 @@ var abiAirdrop = [{
     "internalType": "address",
     "name": "_newWallet",
     "type": "address"
+  }, {
+    "indexed": false,
+    "internalType": "uint256",
+    "name": "_amountDrop",
+    "type": "uint256"
   }],
   "name": "SetNewToken",
   "type": "event"
@@ -173,8 +178,12 @@ var abiAirdrop = [{
     "internalType": "address",
     "name": "_wallet",
     "type": "address"
+  }, {
+    "internalType": "uint256",
+    "name": "_value",
+    "type": "uint256"
   }],
-  "name": "setTokenAndWalletAddr",
+  "name": "setTokenWalletAddrAmount",
   "outputs": [],
   "stateMutability": "nonpayable",
   "type": "function"
