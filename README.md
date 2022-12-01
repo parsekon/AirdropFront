@@ -30,10 +30,13 @@ PRIVATE_KEY="000xxxPRIVATE_KEYxxx000"
 ETHERSCAN_API="000XXXETHERSCAN_APIXXX000"
 ```
 INFURA_URL можно получить на сайте: https://app.infura.io/
+
 ETHERSCAN_API в личном кабинете https://etherscan.io/
+
 PRIVATE_KEY копируете из своего MetaMask. 
-!!! Для тестового проекта лучше НЕ использовать свой основной кошелек. 
-Хотя в файле .gitignore прописаны исключения для git на эти файлы
+
+!!! Для тестового проекта лучше НЕ использовать свой основной кошелек, 
+но в файле .gitignore прописаны исключения для git на эти файлы
 
 6. Деплоим тестовый токен
 ```sh
