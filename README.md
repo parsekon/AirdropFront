@@ -60,3 +60,18 @@ npx hardhat verify --network sepolia ADDRESS_CONTR_AIRDROP
 ```sh
 npx hardhat verify --contract contracts/TokenDrop.sol:TokenDropOne --network sepolia ADDR_TOKEN_CONTR
 ```
+
+Настраиваем фронт
+
+1. Переходим в папку client и устанавливаем зависимости
+```sh
+cd client
+npm install
+```
+
+2. Запускаем локальный проект
+```sh
+npm next dev
+```
+
+3. Для запуска Airdrop следуйте инструкциям на экране
