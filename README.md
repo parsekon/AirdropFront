@@ -61,7 +61,7 @@ npx hardhat verify --network sepolia ADDRESS_CONTR_AIRDROP
 npx hardhat verify --contract contracts/TokenDrop.sol:TokenDropOne --network sepolia ADDR_TOKEN_CONTR
 ```
 
-Настраиваем фронт
+#Настраиваем фронт
 
 1. Переходим в папку client и устанавливаем зависимости
 ```sh
