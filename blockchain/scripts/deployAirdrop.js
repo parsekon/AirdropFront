@@ -64,7 +64,7 @@ function saveABIForClient(contract, name) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../../client/abi/contracts";
   const providerDir = __dirname + "/../../client/abi/providers";
-  const TokenArtifact = artifacts.readArtifactSync(name);
+  const AirdropArtifact = artifacts.readArtifactSync(name);
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);
@@ -113,7 +113,7 @@ function saveABIForClient(contract, name) {
    
 const addressAirdropContract = "${contract.address}";
 
-const abiAirdrop = ${JSON.stringify(TokenArtifact.abi, null, 2)};
+const abiAirdrop = ${JSON.stringify(AirdropArtifact.abi, null, 2)};
 
 const ${lowercaseFirstLetter(
       name

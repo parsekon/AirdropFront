@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import contractAirdropWithSigner from "../abi/contracts/airdropWhithSigner";
+import airdropWithSigner from "../abi/contracts/airdropWithSigner";
 import getDataAirdrop from "../utils/getDataAirdrop";
 
 const GetAirdrop = () => {
@@ -21,7 +21,7 @@ const GetAirdrop = () => {
 
   const handleGetDropClick = async () => {
     try {
-      const tx = await contractAirdropWithSigner().getAirdrop();
+      const tx = await airdropWithSigner().getAirdrop();
       const response = await tx.wait();
       console.log("response >", response);
     } catch (error) {
@@ -31,7 +31,7 @@ const GetAirdrop = () => {
 
   const handleGetDropWithApproveClick = async () => {
     try {
-      const tx = await contractAirdropWithSigner().getAirdropWithApprove();
+      const tx = await airdropWithSigner().getAirdropWithApprove();
       const response = await tx.wait();
       console.log("response >", response);
     } catch (error) {

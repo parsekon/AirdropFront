@@ -251,10 +251,10 @@ const abiAirdrop = [
   },
 ];
 
-const contractAirdrop = new ethers.Contract(
+const airdrop = new ethers.Contract(
   addressAirdropContract,
   abiAirdrop,
   defaultProvider
 );
 
-export default contractAirdrop;
+export default airdrop;

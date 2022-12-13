@@ -2,9 +2,9 @@ import walletProvider from "../providers/walletProvider";
 import contractAirdrop from "./airdrop";
 
 
-const contractAirdropWithSigner = () => {
+const airdropWithSigner = () => {
     const signer = walletProvider?.getSigner();
     return contractAirdrop.connect(signer);
 }
 
-export default contractAirdropWithSigner; 
+export default airdropWithSigner; 
