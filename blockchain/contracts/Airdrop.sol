@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Airdrop is Ownable, Pausable {
 	IERC20 private _TOKEN;
-	mapping (address => bool) private successAirdrops;
+	mapping (address => bool) public successAirdrops;
 	uint public amountAirdrop;
 	address private _walletWithTokens;
 
@@ -65,8 +65,12 @@ contract Airdrop is Ownable, Pausable {
 	}
 
 	// Checking the balance of tokens on the contract
-	function getBalance() internal view returns(uint balance) {
+	function getBalance() public view returns(uint balance) {
 		balance =  _TOKEN.balanceOf(address(this));
+	}
+
+	function getApproved() public view returns(uint sum) {
+		sum = _TOKEN.allowance(_walletWithTokens, address(this));
 	}
 
     // Withdrawal of tokens to the wallet of the contract creator
@@ -86,10 +90,6 @@ contract Airdrop is Ownable, Pausable {
     }
 
     function renounceOwnership() public pure override  {
-        revert();
-    }
-
-    receive() external payable {
         revert();
     }
 }

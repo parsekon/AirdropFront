@@ -1,16 +1,15 @@
 import Layout from "../components/Layout";
-import Head from "next/head";
+import GetAirdrop from "../components/GetAirdrop";
+import SetAirdrop from "../components/SetAirdrop";
 
-function Index() {
+
+const Index = () => {
   return (
     <Layout>
-      <Head>
-        <title>AirDrop</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <GetAirdrop />
+      <SetAirdrop />
     </Layout>
   );
-}
+};
 
 export default Index;

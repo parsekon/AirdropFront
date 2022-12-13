@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
-import defaultProvider from "./providers/defaultProvider";
+import defaultProvider from "../providers/defaultProvider";
 
-const addressAirdropContract = 0x32953F2B38dbA1Ab5a6dD01C263c10D7d71cE396;
+const addressAirdropContract = "0x32953F2B38dbA1Ab5a6dD01C263c10D7d71cE396";
 const abiAirdrop = [
   {
     inputs: [],
