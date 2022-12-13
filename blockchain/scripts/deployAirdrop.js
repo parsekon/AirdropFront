@@ -106,23 +106,6 @@ function saveABIForClient(contract, name) {
     console.log("walletProvider created");
   }
 
-  if (!fs.existsSync(`${contractsDir}/airdropWithSigner.js`)) {
-    fs.writeFileSync(
-      `${contractsDir}/airdropWithSigner.js`,
-      `import walletProvider from "../providers/walletProvider";
-      import contractAirdrop from "./airdrop";
-      
-      
-      const contractAirdropWithSigner = () => {
-          const signer = walletProvider?.getSigner();
-          return contractAirdrop.connect(signer);
-      }
-      
-      export default contractAirdropWithSigner;`
-    );
-    console.log("Provider created");
-  }
-
   fs.writeFileSync(
     `${contractsDir}/${lowercaseFirstLetter(name)}.js`,
     `import { ethers } from "ethers";
