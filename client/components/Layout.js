@@ -2,7 +2,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Head from 'next/head';
 import { useEffect, useState } from "react";
-import walletProvider from "../abi/providers/walletProvider";
 
 function Layout({ children }) {
   const [loginAccount, setLoginAccount] = useState();

@@ -1,10 +1,24 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import airdropWithSigner from "../abi/contracts/airdropWithSigner";
+import getDataAirdrop from "../utils/getDataAirdrop";
+import FormSetDrop from "./FormSetDrop";
+import InfoDrop from "./InfoDrop";
 
 const SetAirdrop = () => {
+  const [info, setInfo] = useState();
   const tokenRef = useRef();
   const walletRef = useRef();
   const amountDropRef = useRef();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setInfo(await getDataAirdrop());
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   const handleSubmit = async () => {
     event.preventDefault();
@@ -46,46 +60,16 @@ const SetAirdrop = () => {
 
   return (
     <div>
-      <h1>Set Airdrop</h1>
-      <form onSubmit={handleSubmit}>
-        <label className="" htmlFor="Token address">
-          Введите арес токена:
-        </label>
-        <input
-          className=""
-          ref={tokenRef}
-          name="token address"
-          type="text"
-          placeholder="enter token address"
-        />
-
-        <label className="" htmlFor="Wallet address">
-          Введите арес кошелька:
-        </label>
-        <input
-          className=""
-          ref={walletRef}
-          name="wallet address"
-          type="text"
-          placeholder="enter wallet address"
-        />
-
-        <label className="" htmlFor="Amount airdrop">
-          Введите количество токенов:
-        </label>
-        <input
-          className=""
-          ref={amountDropRef}
-          name="amount airdrop"
-          type="text"
-          placeholder="enter amount airdrop"
-        />
-        <button type="submit">Create</button>
-      </form>
-
-      <h1>Paused/Unpaused</h1>
-      <button onClick={handlePausedAirdropClick}>paused</button>
-      <button onClick={handleUnpausedAirdropClick}>unpaused</button>
+      <FormSetDrop
+        submitForm={handleSubmit}
+        refToken={tokenRef}
+        refWallet={walletRef}
+        refDrop={amountDropRef}
+        pause={info?.isPause}
+        unpaused={handleUnpausedAirdropClick}
+        paused={handlePausedAirdropClick}
+      />
+      <InfoDrop amount={info?.amountDrop} pause={info?.isPause} />
     </div>
   );
 };

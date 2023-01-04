@@ -42,27 +42,31 @@ contract Airdrop is Ownable, Pausable {
 
     // Changing the token
   	function setTokenWalletAddrAmount(address _newToken, address _wallet, uint _value) external onlyOwner {
-        setToken(_newToken);
-		setWallet(_wallet);
-		setAmountAirdrop(_value);
+        _setToken(_newToken);
+		_setWallet(_wallet);
+		_setAmountAirdrop(_value);
 		emit SetNewToken(address(_TOKEN), _newToken, _wallet, _value);
     }
 
 	// Changing the amount of airdrop
-	function setAmountAirdrop(uint _amount) internal onlyOwner {
+	function _setAmountAirdrop(uint _amount) internal onlyOwner {
         require(_amount != 0, "Change value");
 		amountAirdrop = _amount;
 	}
 
-	function setWallet(address _newWallet) internal onlyOwner {
+	function _setWallet(address _newWallet) internal onlyOwner {
 		require(_newWallet != address(0), "Address not be zero!");
 		_walletWithTokens = _newWallet;
 	}
 
-	function setToken(address _newToken) internal onlyOwner {
+	function _setToken(address _newToken) internal onlyOwner {
 		require(_newToken != address(0), "Address not be zero!");
 		_TOKEN = IERC20(_newToken);
 	}
+
+	function getAddressToken() external view returns(address) {
+		return address(_TOKEN);
+	} 
 
 	// Checking the balance of tokens on the contract
 	function getBalance() public view returns(uint balance) {
